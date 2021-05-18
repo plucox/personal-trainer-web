@@ -3,13 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Paperbase from './views/Paperbase';
+import SignUp from './views/SignUp';
+import SignIn from './views/SignIn';
 
 
 
 const App = () => {
   return(
     <div>
-    <Paperbase />
+    {/* <Paperbase /> */}
+    <SignIn />
+    <SignUp />
     </div>
   );
 };
