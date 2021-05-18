@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Paperbase from './views/Paperbase';
+import RouteSwitch from './views/RouteSwitch';
+import "bootstrap/dist/css/bootstrap.min.css"
 
 
 
 const App = () => {
   return(
     <div>
-    <Paperbase />
+    <RouteSwitch />
     </div>
   );
 };

@@ -8,6 +8,8 @@ import Link from '@material-ui/core/Link';
 import Navigator from './Navigator';
 import Content from './Content';
 import Header from './Header';
+import Signup from './RouteSwitch';
+import { BrowserRouter as Router, NavLink } from 'react-router-dom';
 
 function Copyright() {
   return (
@@ -170,6 +172,7 @@ function Paperbase(props) {
   };
 
   return (
+    
     <ThemeProvider theme={theme}>
       <div className={classes.root}>
         <CssBaseline />
@@ -197,6 +200,7 @@ function Paperbase(props) {
         </div>
       </div>
     </ThemeProvider>
+    
   );
 }
 
