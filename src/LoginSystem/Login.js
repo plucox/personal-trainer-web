@@ -4,6 +4,7 @@ import  { useAuth } from '../contexts/AuthContext'
 import { Link, useHistory } from 'react-router-dom'
 import firebase from "firebase/app";
 import "firebase/auth";
+import GoogleButton from 'react-google-button'
 
 
 
@@ -52,14 +53,13 @@ export default function Login() {
             <Button disabled={loading} className="w-100" type="submit">Log In</Button>
             </Form>
           </Card.Body>
-          <button
+          <GoogleButton
+            label='Sign in with Google'
             onClick={() => {
               const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
               firebase.auth().signInWithPopup(googleAuthProvider);
             }}
-          >
-            Sign in with Google
-          </button>
+          />
           <div className="w-100 text-center mt-2">Need an account? <Link to="/signup">Sign Up</Link></div>
           <div className="w-100 text-center mt-2"><Link to="/">Back to home</Link></div>
           <br />
