@@ -10,6 +10,7 @@ import Content from './Content';
 import Header from './Header';
 import Signup from './RouteSwitch';
 import { BrowserRouter as Router, NavLink } from 'react-router-dom';
+import firebase from 'firebase';
 
 function Copyright() {
   return (
@@ -166,6 +167,20 @@ const styles = {
 function Paperbase(props) {
   const { classes } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  var user = firebase.auth().currentUser;
+  var email, uid, emailVerified;
+
+  if (user != null) {
+    email = user.email;
+    emailVerified = user.emailVerified;
+    uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+                    // this value to authenticate with your backend server, if
+                    // you have one. Use User.getToken() instead.
+    console.log(email);
+    console.log(emailVerified);
+    console.log(uid);
+  }
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
