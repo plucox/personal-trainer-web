@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: `https://cors-anywhere.herokuapp.com/https://personal-trainer-api.herokuapp.com/api/`
+  baseURL: `https://personal-trainer-api.herokuapp.com/api/`
 });

@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import Paperbase from './views/Paperbase';
 import RouteSwitch from './views/RouteSwitch';
 import "bootstrap/dist/css/bootstrap.min.css"
-
+import SetProfile from "./views/SetProfile";
 
 
 const App = () => {

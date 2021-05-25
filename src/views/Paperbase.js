@@ -11,6 +11,8 @@ import Header from './Header';
 import Signup from './RouteSwitch';
 import { BrowserRouter as Router, NavLink } from 'react-router-dom';
 import firebase from 'firebase';
+import SetProfile from "./SetProfile";
+
 
 function Copyright() {
   return (
@@ -207,7 +209,8 @@ function Paperbase(props) {
         <div className={classes.app}>
           <Header onDrawerToggle={handleDrawerToggle} />
           <main className={classes.main}>
-            <Content />
+            {/* <Content /> */}
+            <SetProfile />
           </main>
           <footer className={classes.footer}>
             <Copyright />
