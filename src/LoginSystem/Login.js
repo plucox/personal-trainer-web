@@ -23,8 +23,8 @@ export default function Login() {
       setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      localStorage.setItem("email", emailRef.current.value)
-      localStorage.setItem("logged", true)
+      // localStorage.setItem("email", emailRef.current.value)
+      // localStorage.setItem("logged", true)
       history.push("/")
     } catch {
       setError("Failed to log in")
@@ -57,7 +57,11 @@ export default function Login() {
             label='Sign in with Google'
             onClick={() => {
               const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-              firebase.auth().signInWithPopup(googleAuthProvider);
+              firebase.auth().signInWithPopup(googleAuthProvider).then(function() {
+                history.push("/");
+              }).catch(function(error) {
+                console.log(error);
+              });
             }}
           />
           <div className="w-100 text-center mt-2">Need an account? <Link to="/signup">Sign Up</Link></div>

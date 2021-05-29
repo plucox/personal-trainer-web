@@ -1,25 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
-import Avatar from '@material-ui/core/Avatar';
-
 import Grid from '@material-ui/core/Grid';
-import HelpIcon from '@material-ui/icons/Help';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
 import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import Toolbar from '@material-ui/core/Toolbar';
-import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import { Router, NavLink } from 'react-router-dom';
+import { Router, NavLink, useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
+import firebase from "firebase/app";
+import "firebase/auth";
+
 const lightColor = 'rgba(255, 255, 255, 0.7)';
+
+function ButtonLoginLogout () {
+  var user = firebase.auth().currentUser;
+  const history = useHistory();
+  if (user!=null)
+  var email = user.email;
+
+  const signOutUser = () => firebase.auth().signOut().then(function() {
+    history.push("/");
+  }).catch(function(error) {
+    console.log(error);
+  });
+
+  return (
+    user ? 
+    <React.Fragment>
+      {email}&nbsp;&nbsp;
+    <Button variant="secondary" onClick={signOutUser} >logout</Button>
+    </React.Fragment>
+    :
+    <React.Fragment>
+      <NavLink to="/login">
+        <Button className="mr-1" variant="secondary">Log In</Button>
+        </NavLink>
+        <NavLink to="/signup">
+        <Button variant="secondary">Sign Up</Button>
+      </NavLink>
+    </React.Fragment>
+  )
+}
 
 const styles = (theme) => ({
   secondaryBar: {
@@ -64,13 +92,7 @@ function Header(props) {
               </Grid>
             </Hidden>
             <Grid item xs />
-            <NavLink to="/login">
-            <Button className="mr-1" variant="secondary">Log In</Button>
-            </NavLink>
-            
-            <NavLink to="/signup">
-            <Button variant="secondary">Sign Up</Button>
-            </NavLink>
+            <ButtonLoginLogout />
           </Grid>
         </Toolbar>
       </AppBar>
