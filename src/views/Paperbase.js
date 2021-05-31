@@ -12,6 +12,7 @@ import Signup from './RouteSwitch';
 import { BrowserRouter as Router, NavLink } from 'react-router-dom';
 import firebase from 'firebase';
 import SetProfile from "./SetProfile";
+import Checkout from '../PayPal/Checkout';
 
 
 function Copyright() {
@@ -210,7 +211,8 @@ function Paperbase(props) {
           <Header onDrawerToggle={handleDrawerToggle} />
           <main className={classes.main}>
             {/* <Content /> */}
-            <SetProfile />
+            {/* <SetProfile /> */}
+            <Checkout />
           </main>
           <footer className={classes.footer}>
             <Copyright />
