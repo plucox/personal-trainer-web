@@ -2,10 +2,10 @@ import React, { useRef, useState } from 'react'
 import { Card, Form, Button, Alert } from 'react-bootstrap';
 import  { useAuth } from '../contexts/AuthContext'
 import { Link, useHistory } from 'react-router-dom'
-import firebase from "firebase/app";
 import "firebase/auth";
 import GoogleButton from 'react-google-button'
-
+import firebase from "firebase/app";
+import Typography from '@material-ui/core/Typography';
 
 
 export default function Login() {
@@ -52,8 +52,11 @@ export default function Login() {
             </Form.Group>
             <Button disabled={loading} className="w-100" type="submit">Log In</Button>
             </Form>
-          </Card.Body>
-          <GoogleButton
+            <br/>
+            <Typography variant="h6" gutterBottom>
+              If You already registered by Google
+            </Typography>
+            <GoogleButton
             label='Sign in with Google'
             onClick={() => {
               const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
@@ -64,6 +67,7 @@ export default function Login() {
               });
             }}
           />
+          </Card.Body>
           <div className="w-100 text-center mt-2">Need an account? <Link to="/signup">Sign Up</Link></div>
           <div className="w-100 text-center mt-2"><Link to="/">Back to home</Link></div>
           <br />

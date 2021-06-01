@@ -34,7 +34,7 @@ export default function Signup() {
       email = user.email;
       uid = user.uid;
       }
-      API.post('mentee', {
+      API.post('trainer', {
         "_id": uid,
         "email": email
       }).then(function(result){
@@ -56,7 +56,7 @@ export default function Signup() {
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Typography variant="h6" gutterBottom>
-            Create an account as Mentee <Link to="/signupTrainer">or as Trainer</Link>
+            Create an account as Trainer <Link to="/signup">or as Mentee</Link>
           </Typography>
           <Form onSubmit={handleSubmit}>
           <Form.Group id="email">
@@ -81,7 +81,7 @@ export default function Signup() {
                 email = user.email;
                 uid = user.uid;
                 }
-                API.post('mentee', {
+                API.post('trainer', {
                     "_id": uid,
                     "email": email
                   }).then(function(result){

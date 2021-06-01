@@ -171,19 +171,19 @@ function Paperbase(props) {
   const { classes } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  var user = firebase.auth().currentUser;
-  var email, uid, emailVerified;
+  // var user = firebase.auth().currentUser;
+  // var email, uid, emailVerified;
 
-  if (user != null) {
-    email = user.email;
-    emailVerified = user.emailVerified;
-    uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-                    // this value to authenticate with your backend server, if
-                    // you have one. Use User.getToken() instead.
-    console.log(email);
-    console.log(emailVerified);
-    console.log(uid);
-  }
+  // if (user != null) {
+  //   email = user.email;
+  //   emailVerified = user.emailVerified;
+  //   uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+  //                   // this value to authenticate with your backend server, if
+  //                   // you have one. Use User.getToken() instead.
+  //   console.log(email);
+  //   console.log(emailVerified);
+  //   console.log(uid);
+  // }
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -211,8 +211,8 @@ function Paperbase(props) {
           <Header onDrawerToggle={handleDrawerToggle} />
           <main className={classes.main}>
             {/* <Content /> */}
-            {/* <SetProfile /> */}
-            <Checkout />
+            <SetProfile />
+            {/* <Checkout /> */}
           </main>
           <footer className={classes.footer}>
             <Copyright />

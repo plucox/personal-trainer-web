@@ -5,6 +5,7 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import Content from './Content';
 import Paperbase from './Paperbase';
 import { AuthProvider } from '../contexts/AuthContext'
+import SignupTrainer from '../LoginSystem/SignupTrainer'
 
 const RouteSwitch = () => {
     return (
@@ -13,7 +14,8 @@ const RouteSwitch = () => {
             <Switch>
                 <Route path="/" exact component={Paperbase} />
                 <Route path="/signup" component={Signup} />
-                <Route path="/login" component={Login} />          
+                <Route path="/login" component={Login} />  
+                <Route path="/" component={SignupTrainer} />          
             </Switch>
         </AuthProvider>
         </Router>
