@@ -213,9 +213,10 @@ function Paperbase(props, value) {
           
           <main className={classes.main}>
             {/* <Content /> */}
-            SSSS  
-            <PrivateRoute path="/" component={SetProfile} />
-           
+            <Switch>
+            <PrivateRoute path="/testowy2" component={Content}/> 
+            <PrivateRoute path="/profile" component={SetProfile} />
+            </Switch>
             {/* <Checkout /> */}
           </main>
           

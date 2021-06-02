@@ -14,7 +14,7 @@ const RouteSwitch = () => {
         <Router>
         <AuthProvider>
             <Switch>
-                <Route path="/" exact component={Paperbase} />  
+                <Route path="/" component={Paperbase} />  
                 <Route path="/signup" component={Signup} />
                 <Route path="/signupTrainer" component={SignupTrainer} />
                 <Route path="/login" component={Login} />

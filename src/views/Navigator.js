@@ -18,7 +18,7 @@ import SettingsInputComponentIcon from '@material-ui/icons/SettingsInputComponen
 import TimerIcon from '@material-ui/icons/Timer';
 import SettingsIcon from '@material-ui/icons/Settings';
 import PhonelinkSetupIcon from '@material-ui/icons/PhonelinkSetup';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const categories = [
   {
@@ -116,7 +116,7 @@ function Navigator(props) {
               </ListItemText>
             </ListItem>
             {children.map(({ id: childId, icon, active, link }) => (
-              <Link to={link}>
+              <NavLink to={link}>
                 {console.log(link)}
               <ListItem
                 key={childId}
@@ -134,7 +134,7 @@ function Navigator(props) {
                 </ListItemText>
                 
               </ListItem>
-                </Link>
+                </NavLink>
                 ))} 
 
 
