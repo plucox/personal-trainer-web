@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ProfileDetails from './ProfileDetails';
+import { Route } from 'react-router-dom'
 
 
 
@@ -50,6 +51,7 @@ export default function Checkout() {
 
   return (
     <React.Fragment>
+      
       <CssBaseline />
       <main className={classes.layout}>
         <Paper className={classes.paper}>

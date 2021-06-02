@@ -8,11 +8,12 @@ import Link from '@material-ui/core/Link';
 import Navigator from './Navigator';
 import Content from './Content';
 import Header from './Header';
-import Signup from './RouteSwitch';
-import { BrowserRouter as Router, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-dom';
 import firebase from 'firebase';
 import SetProfile from "./SetProfile";
 import Checkout from '../PayPal/Checkout';
+import PrivateRoute from '../routing/PrivateRoute'
+
 
 
 function Copyright() {
@@ -167,7 +168,7 @@ const styles = {
   },
 };
 
-function Paperbase(props) {
+function Paperbase(props, value) {
   const { classes } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -196,7 +197,7 @@ function Paperbase(props) {
         <CssBaseline />
         <nav className={classes.drawer}>
           <Hidden smUp implementation="js">
-            <Navigator
+          <Navigator
               PaperProps={{ style: { width: drawerWidth } }}
               variant="temporary"
               open={mobileOpen}
@@ -209,11 +210,15 @@ function Paperbase(props) {
         </nav>
         <div className={classes.app}>
           <Header onDrawerToggle={handleDrawerToggle} />
+          
           <main className={classes.main}>
             {/* <Content /> */}
-            <SetProfile />
+            SSSS  
+            <PrivateRoute path="/" component={SetProfile} />
+           
             {/* <Checkout /> */}
           </main>
+          
           <footer className={classes.footer}>
             <Copyright />
           </footer>
