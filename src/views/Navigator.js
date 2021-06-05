@@ -117,7 +117,7 @@ function Navigator(props) {
             </ListItem>
             {children.map(({ id: childId, icon, active, link }) => (
               <NavLink to={link}>
-                {console.log(link)}
+                {/* {console.log(link)} */}
               <ListItem
                 key={childId}
                 button

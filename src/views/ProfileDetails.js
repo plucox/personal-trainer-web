@@ -8,25 +8,25 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 
 
 export default function ProfileDetails() {
-  const [state, setState] = React.useState({
-    mentee: false,
-    trainer: true,
-  });
+  // const [state, setState] = React.useState({
+  //   mentee: false,
+  //   trainer: true,
+  // });
 
-  const [result, value] = React.useState(
-      <Target />
-    );
+  // const [result, value] = React.useState(
+  //     <Target />
+  //   );
   
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-    if(state.mentee === true) {
-      value(
-        <Target />
-      )
-    } else {
-      value()
-    }
-  };
+  // const handleChange = (event) => {
+  //   setState({ ...state, [event.target.name]: event.target.checked });
+  //   if(state.mentee === true) {
+  //     value(
+  //       <Target />
+  //     )
+  //   } else {
+  //     value()
+  //   }
+  // };
   
 
   return (
@@ -73,7 +73,7 @@ export default function ProfileDetails() {
           />
         </Grid>
       </Grid>
-      <br/>
+      {/* <br/>
         <Typography variant="h6" gutterBottom>
           Choose your profile type
         </Typography>
@@ -153,7 +153,7 @@ export default function ProfileDetails() {
             fullWidth
           />
         </Grid>
-      </Grid>
+      </Grid> */}
     </React.Fragment>
   );
 }
