@@ -15,6 +15,7 @@ import PermMediaOutlinedIcon from '@material-ui/icons/PhotoSizeSelectActual';
 import PublicIcon from '@material-ui/icons/Public';
 import SettingsEthernetIcon from '@material-ui/icons/SettingsEthernet';
 import SettingsInputComponentIcon from '@material-ui/icons/SettingsInputComponent';
+import TransferWithinAStationIcon from '@material-ui/icons/TransferWithinAStation';
 import TimerIcon from '@material-ui/icons/Timer';
 import SettingsIcon from '@material-ui/icons/Settings';
 import PhonelinkSetupIcon from '@material-ui/icons/PhonelinkSetup';
@@ -26,6 +27,7 @@ const categories = [
     children: [
       { id: 'Authentication', icon: <PeopleIcon />, link: "/", active: true },
       { id: 'Profile', icon: <AccessibilityNewIcon />, link: "/profile" },
+      { id: 'Dimensions', icon: <TransferWithinAStationIcon />, link: "/dimensions" },
       { id: 'Storage', icon: <PermMediaOutlinedIcon />, link: "/testowy1" },
       { id: 'Hosting', icon: <PublicIcon />, link: "/testowy2" },
       { id: 'Functions', icon: <SettingsEthernetIcon />, link: "/testowy3" },

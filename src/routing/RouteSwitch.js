@@ -18,7 +18,6 @@ const RouteSwitch = () => {
                 <Route path="/signup" component={Signup} />
                 <Route path="/signupTrainer" component={SignupTrainer} />
                 <Route path="/login" component={Login} />
-
             </Switch>
         </AuthProvider>
         </Router>

@@ -13,6 +13,7 @@ import firebase from 'firebase';
 import SetProfile from "./SetProfile";
 import Checkout from '../PayPal/Checkout';
 import PrivateRoute from '../routing/PrivateRoute'
+import Dimensions from './Dimensions';
 
 
 
@@ -216,6 +217,7 @@ function Paperbase(props, value) {
             <Switch>
             <PrivateRoute path="/testowy2" component={Content}/> 
             <PrivateRoute path="/profile" component={SetProfile} />
+            <PrivateRoute path="/dimensions" component={Dimensions} />
             </Switch>
             {/* <Checkout /> */}
           </main>

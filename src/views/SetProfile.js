@@ -81,7 +81,6 @@ export default function SetProfile() {
     }).catch(() => {
       console.error("didn't detect profile as mentee");
     });
-
   });
 
   const sendValue = () => {
