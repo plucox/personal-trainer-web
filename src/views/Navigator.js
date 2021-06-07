@@ -15,6 +15,7 @@ import PermMediaOutlinedIcon from '@material-ui/icons/PhotoSizeSelectActual';
 import PublicIcon from '@material-ui/icons/Public';
 import SettingsEthernetIcon from '@material-ui/icons/SettingsEthernet';
 import SettingsInputComponentIcon from '@material-ui/icons/SettingsInputComponent';
+import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import TransferWithinAStationIcon from '@material-ui/icons/TransferWithinAStation';
 import TimerIcon from '@material-ui/icons/Timer';
 import SettingsIcon from '@material-ui/icons/Settings';
@@ -26,12 +27,9 @@ const categories = [
     id: 'Develop',
     children: [
       { id: 'Authentication', icon: <PeopleIcon />, link: "/", active: true },
+      { id: 'Advertisments', icon: <LibraryBooksIcon />, link: "/advertisments" },
       { id: 'Profile', icon: <AccessibilityNewIcon />, link: "/profile" },
       { id: 'Dimensions', icon: <TransferWithinAStationIcon />, link: "/dimensions" },
-      { id: 'Storage', icon: <PermMediaOutlinedIcon />, link: "/testowy1" },
-      { id: 'Hosting', icon: <PublicIcon />, link: "/testowy2" },
-      { id: 'Functions', icon: <SettingsEthernetIcon />, link: "/testowy3" },
-      { id: 'ML Kit', icon: <SettingsInputComponentIcon />, link: "testowy4" },
     ],
   },
   {
