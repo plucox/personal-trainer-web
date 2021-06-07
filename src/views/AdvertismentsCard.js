@@ -1,6 +1,7 @@
 import React, {useState}  from 'react';
 import { makeStyles, Card, CardActionArea, CardActions, CardContent, CardMedia, Button, Typography} from '@material-ui/core';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,11 +28,11 @@ export default function AdvertismentsCard({productName, detail0, price}) {
         <Card className={classes.root}>
         <CardActionArea>
             <CardContent className={classes.cardContent}>
-            <Typography gutterBottom component="h5" variant="body1">
-                {productName}
+            <Typography gutterBottom component="h6" variant="body1" >
+            {<EmojiPeopleIcon />} {productName}
             </Typography>
-            <Typography variant="caption" color="textSecondary" component="h2">
-                {detail0}<br/>
+            <Typography variant="caption" component="h2">
+                Description: {detail0}<br/>
             </Typography>
             </CardContent>
             </CardActionArea>

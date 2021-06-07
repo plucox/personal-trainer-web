@@ -94,23 +94,6 @@ export default function Advertisments() {
     }
 
 
-    const sendValue = () => {
-        // API.post(profileType+'/dimensions?id='+uid, {
-        // //   "neck": neckRef.current.value,
-        // //   "arm": armRef.current.value,
-        // //   "forearm": forearmRef.current.value,
-        // //   "wrist": wristRef.current.value,
-        // //   "chest": chestRef.current.value,
-        // //   "waist": waistRef.current.value
-        // }).then(function(result){
-        //     console.log(result);
-        //     // history.push("/");
-        // })
-        console.log(advertismentList[0].email);
-
-
-      };
-
     return (
     
     <React.Fragment>
@@ -145,7 +128,7 @@ export default function Advertisments() {
                         <Grid container alignItems="center" spacing={3}>
                             <Grid item key={index} xs={12}>
                                 <AdvertismentsCard
-                                productName={ "nazwa" }
+                                productName={target===1 ? "Maintenance" : target===2 ? "Reduction" : "Gain"}
                                 price={Number(price).toFixed(2)}
                                 detail0={description}
                                 />
@@ -153,16 +136,7 @@ export default function Advertisments() {
                         </Grid>
                     ))}
                 {/* {profileType==="mentee" ? selectTarget : ''} */}
-                <div className={classes.buttons}>
-                    <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.button}
-                    onClick={sendValue}
-                    >
-                    Save
-                    </Button>
-                </div>
+                
                 </React.Fragment>
         </React.Fragment>
         </React.Fragment>
