@@ -216,7 +216,7 @@ function Paperbase(props, value) {
           
           <main className={classes.main}>
             {/* <Content /> */}
-            {/* <Signup /> */}
+            <Signup />
 
             <Switch>
             <PrivateRoute path="/testowy2" component={Content}/> 

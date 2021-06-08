@@ -14,6 +14,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useHistory } from 'react-router';
 import PayPal from '../PayPal/PayPal';
+import SuccessPayment from '../PayPal/SuccessPayment';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -71,6 +72,7 @@ export default function CreateAdvertisment() {
   const descriptionRef = useRef();
   const history = useHistory();
   const [target, setTarget] = React.useState(1);
+  const [payd, setPayd] = useState(false);
   var user, uid;
   user = firebase.auth().currentUser;
   if (user!=null){
@@ -103,17 +105,17 @@ export default function CreateAdvertisment() {
   const sendValue = () => {
     if(priceRef.current.value>0){
     setCheckout(true);
+    } else if (priceRef.current.value == 0) {
+      API.post('mentee/advertisment?id='+uid, {
+        "active": true,
+        "price": priceRef.current.value,
+        "description": descriptionRef.current.value,
+        "dietGoals": target
+      }).then(function(result){
+          console.log(result);
+          setPayd(true);
+      })
     }
-
-    // API.post(profileType+'/profile?id='+uid, {
-    //   "firstname": firstNameRef.current.value,
-    //   "surname": surNameRef.current.value,
-    //   "age": ageRef.current.value,
-    //   "bio": bioRef.current.value
-    // }).then(function(result){
-    //     console.log(result);
-    //     history.push("/");
-    // })
   };
 
   const backHandler = () => {
@@ -198,7 +200,7 @@ export default function CreateAdvertisment() {
                     Pay
                   </Button>
                   </div>)}
-                
+                {payd? <SuccessPayment/> : ""}
               </React.Fragment>
           </React.Fragment>
         </Paper>
