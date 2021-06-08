@@ -81,7 +81,7 @@ export default function SetProfile() {
     }).catch(() => {
       console.error("didn't detect profile as mentee");
     });
-  });
+  },[uid]);
 
   const sendValue = () => {
     API.post(profileType+'/profile?id='+uid, {

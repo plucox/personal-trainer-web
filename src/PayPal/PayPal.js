@@ -1,7 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import SuccessPayment from './SuccessPayment';
+import API from '../API';
 
-export default function PayPal() {
+export default function PayPal(props) {
 
+    const [payd, setPayd] = useState(false);
     const paypal = useRef()
 
     useEffect(() => {
@@ -15,7 +18,7 @@ export default function PayPal() {
                     description: "Cool looking table",
                     amount: {
                       currency_code: "PLN",
-                      value: 150.0,
+                      value: props.price,
                     },
                   },
                 ],
@@ -24,6 +27,16 @@ export default function PayPal() {
             onApprove: async (data, actions) => {
               const order = await actions.order.capture();
               console.log(order);
+              API.post('mentee/advertisment?id='+props.uid, {
+                "active": true,
+                "price": props.price,
+                "description": props.description,
+                "dietGoals": props.target
+              }).then(function(result){
+                  console.log(result);
+              })
+
+              setPayd(true);
             },
             onError: (err) => {
               console.log(err);
@@ -34,7 +47,9 @@ export default function PayPal() {
 
     return (
         <div>
+          <br/><br/><br/><br/>
             <div ref={paypal}></div>
+            {payd? <SuccessPayment/> : ""}
         </div>
     );
 }

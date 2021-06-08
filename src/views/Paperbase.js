@@ -15,7 +15,8 @@ import Checkout from '../PayPal/Checkout';
 import PrivateRoute from '../routing/PrivateRoute'
 import Dimensions from './Dimensions';
 import Advertisments from './Advertisments';
-
+import CreateAdvertisment from './CreateAdvertisment';
+import Signup from '../LoginSystem/Signup';
 
 
 function Copyright() {
@@ -215,11 +216,14 @@ function Paperbase(props, value) {
           
           <main className={classes.main}>
             {/* <Content /> */}
+            {/* <Signup /> */}
+
             <Switch>
             <PrivateRoute path="/testowy2" component={Content}/> 
             <PrivateRoute path="/profile" component={SetProfile} />
             <PrivateRoute path="/dimensions" component={Dimensions} />
             <PrivateRoute path="/advertisments" component={Advertisments} />
+            <PrivateRoute path="/createadvertisment" component={CreateAdvertisment} />
             </Switch>
             {/* <Checkout /> */}
           </main>

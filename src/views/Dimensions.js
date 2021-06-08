@@ -137,7 +137,7 @@ export default function Dimensions() {
       "waist": waistRef.current.value
     }).then(function(result){
         console.log(result);
-        // history.push("/");
+        history.push("/");
     })
   };
 

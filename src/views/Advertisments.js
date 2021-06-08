@@ -5,9 +5,7 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import Grid from '@material-ui/core/Grid';
 import API from '../API';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -64,6 +62,7 @@ export default function Advertisments() {
     const classes = useStyles();
     const [target, setTarget] = React.useState(1);
     const [profileType, setProfileType] = useState();
+    const history = useHistory();
     const [advertismentList, setAdvertismentList] = useState(
         [{
             "_id": "60b604184b470713f2764bdc",
@@ -73,7 +72,30 @@ export default function Advertisments() {
             "dietGoals": 1
         }]
     );
+    var user, uid;
+    user = firebase.auth().currentUser;
+    if (user!=null){
+    uid = user.uid;
+    }
 
+    const advertButtonHandler = () => {
+        history.push("/createadvertisment");
+    }
+
+    let createAdvButton = (
+        <>
+        <div className={classes.buttons}>
+            <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            onClick={advertButtonHandler}
+            >
+            Create Advertisment
+            </Button>
+        </div>
+        </>
+    )
 
     useEffect(() =>{
         API.get('mentee/advertisment/all?idg='+target).then(function(result){
@@ -81,18 +103,30 @@ export default function Advertisments() {
         }).catch(() => {
             console.error("There are no ads with the given id");
           });
+
+        var status;
+        API.get('trainer/profile?id='+uid).then(function(result){
+        status=result.status;
+        if(status === 200){
+        setProfileType("trainer");
+        }
+        }).catch(() => {
+        console.error("didn't detect profile as trainer");
+        });
+
+        API.get('mentee/profile?id='+uid).then(function(result){
+        status=result.status;
+        if(status === 200){
+        setProfileType("mentee");
+        }
+        }).catch(() => {
+        console.error("didn't detect profile as mentee");
+        });
     },[target]);
 
     const handleTargetChange = (event) => {
       setTarget(event.target.value);
     };
-
-    var user, uid;
-    user = firebase.auth().currentUser;
-    if (user!=null){
-    uid = user.uid;
-    }
-
 
     return (
     
@@ -135,8 +169,8 @@ export default function Advertisments() {
                             </Grid>
                         </Grid>
                     ))}
-                {/* {profileType==="mentee" ? selectTarget : ''} */}
-                
+                {/* Remember to change profiletype to mentee */}
+                {profileType==="mentee" ? createAdvButton : ''}
                 </React.Fragment>
         </React.Fragment>
         </React.Fragment>
