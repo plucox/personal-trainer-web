@@ -17,6 +17,8 @@ import Dimensions from './Dimensions';
 import Advertisments from './Advertisments';
 import CreateAdvertisment from './CreateAdvertisment';
 import Signup from '../LoginSystem/Signup';
+import SignupTrainer from '../LoginSystem/SignupTrainer';
+import Login from '../LoginSystem/Login';
 
 
 function Copyright() {
@@ -215,17 +217,17 @@ function Paperbase(props, value) {
           <Header onDrawerToggle={handleDrawerToggle} />
           
           <main className={classes.main}>
-            {/* <Content /> */}
-            <Signup />
-
             <Switch>
             <PrivateRoute path="/testowy2" component={Content}/> 
             <PrivateRoute path="/profile" component={SetProfile} />
             <PrivateRoute path="/dimensions" component={Dimensions} />
             <PrivateRoute path="/advertisments" component={Advertisments} />
             <PrivateRoute path="/createadvertisment" component={CreateAdvertisment} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/signupTrainer" component={SignupTrainer} />
+            <Route path="/login" component={Login} />
+            <Route path="/profile" component={SetProfile} />
             </Switch>
-            {/* <Checkout /> */}
           </main>
           
           <footer className={classes.footer}>
