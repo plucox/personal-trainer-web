@@ -9,14 +9,13 @@ import Navigator from './Navigator';
 import Content from './Content';
 import Header from './Header';
 import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-dom';
-import firebase from 'firebase';
+
 import SetProfile from "./SetProfile";
-import Checkout from '../PayPal/Checkout';
 import PrivateRoute from '../routing/PrivateRoute'
 import Dimensions from './Dimensions';
 import Advertisments from './Advertisments';
 import CreateAdvertisment from './CreateAdvertisment';
-import Signup from '../LoginSystem/Signup';
+
 
 
 function Copyright() {
@@ -216,8 +215,7 @@ function Paperbase(props, value) {
           
           <main className={classes.main}>
             {/* <Content /> */}
-            <Signup />
-
+            
             <Switch>
             <PrivateRoute path="/testowy2" component={Content}/> 
             <PrivateRoute path="/profile" component={SetProfile} />

@@ -32,14 +32,6 @@ const categories = [
       { id: 'Dimensions', icon: <TransferWithinAStationIcon />, link: "/dimensions" },
     ],
   },
-  {
-    id: 'Quality',
-    children: [
-      { id: 'Analytics', icon: <SettingsIcon />, link: "/testowy1" },
-      { id: 'Performance', icon: <TimerIcon />, link: "/testowy1" },
-      { id: 'Test Lab', icon: <PhonelinkSetupIcon />, link: "/testowy1" },
-    ],
-  },
 ];
 
 const styles = (theme) => ({
