@@ -158,13 +158,15 @@ export default function Advertisments() {
                         </React.Fragment>
                     </Grid>
                     <br/>
-                    {advertismentList.map(({price, description},index) => (
+                    {advertismentList.map(({_id,price, description},index) => (
                         <Grid container alignItems="center" spacing={3}>
                             <Grid item key={index} xs={12}>
                                 <AdvertismentsCard
                                 productName={target===1 ? "Maintenance" : target===2 ? "Reduction" : "Gain"}
+                                id={_id}
                                 price={Number(price).toFixed(2)}
                                 detail0={description}
+                                profileType={profileType}
                                 />
                             </Grid>
                         </Grid>
