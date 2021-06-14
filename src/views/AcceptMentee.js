@@ -9,10 +9,18 @@ import MuiDialogContent from '@material-ui/core/DialogContent';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import API from '../API';
+import firebase from "firebase/app";
 
 const useStyles = makeStyles((theme) => ({
   dialog: {
     textAlign: 'center',
+  },
+  button: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    float: 'right',
   },
 
 }));
@@ -49,25 +57,48 @@ const DialogContent = withStyles((theme) => ({
   },
 }))(MuiDialogContent);
 
-function SuccessPayment() {
+function AcceptMentee({id, productName, detail0, price, profileType}) {
   const classes = useStyles();
   let history = useHistory();
   const [open, setOpen] = React.useState(true);
   const handleClose = () => {
     setOpen(false);
-    history.push("/advertisments")
+    history.push("/");
+  };
+
+    var user, uid;
+    user = firebase.auth().currentUser;
+    if (user!=null){
+    uid = user.uid;
+    }
+
+  const sendValue = () => {
+    API.patch(profileType+'/advertisment?ida='+id+'&idt='+uid)
+    .then(function(result){
+        console.log(result);
+        history.push("/");
+    })
   };
 
   return (
     <div>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} >
         <DialogTitle id="customized-dialog-title" onClose={handleClose} className={classes.dialog} >
-            Payment confirmation
+            Accept mentee's advert
         </DialogTitle>
         <DialogContent dividers>
         <Alert severity="success">
-        <AlertTitle><strong>Payment completed successfully</strong></AlertTitle>
-        Successfully paid for the advertisement <strong>{"ad number"}</strong>
+        <AlertTitle><strong>{productName}</strong></AlertTitle>
+        Description: {detail0}<br/>
+        The price is <strong>{price}</strong><br/>
+        <Button
+        variant="contained"
+        color="primary"
+        className={classes.button}
+        onClick={sendValue}
+        >
+        Accept
+        </Button>
         </Alert>
         </DialogContent>
       </Dialog>
@@ -75,4 +106,4 @@ function SuccessPayment() {
   )
 }
 
-export default SuccessPayment
+export default AcceptMentee
