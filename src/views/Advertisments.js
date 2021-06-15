@@ -62,6 +62,7 @@ export default function Advertisments() {
     const classes = useStyles();
     const [target, setTarget] = React.useState(1);
     const [profileType, setProfileType] = useState();
+    const [menteeHaveAdv, setMenteeHaveAdv] = useState(false);
     const history = useHistory();
     const [advertismentList, setAdvertismentList] = useState(
         [{
@@ -72,6 +73,15 @@ export default function Advertisments() {
             "dietGoals": 1
         }]
     );
+
+    const [menteeAdvertismentList, setMenteeAdvertismentList] = useState({
+    "_id": "60b604184b470713f2764bdc",
+    "active": true,
+    "price": 1200.0,
+    "description": "",
+    "dietGoals": 1
+    });
+
     var user, uid;
     user = firebase.auth().currentUser;
     if (user!=null){
@@ -103,6 +113,14 @@ export default function Advertisments() {
         }).catch(() => {
             console.error("There are no ads with the given id");
           });
+        
+        API.get('mentee/advertisment?id='+uid).then(function(res){
+            setMenteeAdvertismentList(res.data);
+            setMenteeHaveAdv(true);
+        }).catch(() => {
+            console.error("There are no ads with the given mentee id");
+            setMenteeHaveAdv(false);
+          });
 
         var status;
         API.get('trainer/profile?id='+uid).then(function(result){
@@ -133,6 +151,36 @@ export default function Advertisments() {
     <React.Fragment>
     <CssBaseline />
     <main className={classes.layout}>
+      {menteeHaveAdv ? (
+        <Paper className={classes.paper}>
+        <Typography component="h1" variant="h4" align="center">
+        Your advertisment
+        </Typography>
+        <React.Fragment>
+            <React.Fragment>
+                <React.Fragment>
+                    <br/>
+                        <Grid container alignItems="center" spacing={3}>
+                            <Grid item key={1} xs={12}>
+                                <AdvertismentsCard
+                                productName={menteeAdvertismentList.dietGoals===1 ? "Maintenance" : menteeAdvertismentList.dietGoals===2 ? "Reduction" : "Gain"}
+                                id={menteeAdvertismentList._id}
+                                price={Number(menteeAdvertismentList.price).toFixed(2)}
+                                detail0={menteeAdvertismentList.description}
+                                profileType={profileType}
+                                />
+                            </Grid>
+                        </Grid>
+                {/* Remember to change profiletype to mentee */}
+                {/* {profileType==="mentee" ? createAdvButton : ''} */}
+                </React.Fragment>
+        </React.Fragment>
+        </React.Fragment>
+    </Paper>
+      ) : ""}
+    
+
+
     <Paper className={classes.paper}>
         <Typography component="h1" variant="h4" align="center">
         List of Advertisments
@@ -177,6 +225,7 @@ export default function Advertisments() {
         </React.Fragment>
         </React.Fragment>
     </Paper>
+    
     </main>
     </React.Fragment>
     );
