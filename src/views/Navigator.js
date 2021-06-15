@@ -20,7 +20,7 @@ import TransferWithinAStationIcon from '@material-ui/icons/TransferWithinAStatio
 import TimerIcon from '@material-ui/icons/Timer';
 import SettingsIcon from '@material-ui/icons/Settings';
 import PhonelinkSetupIcon from '@material-ui/icons/PhonelinkSetup';
-import { BrowserRouter as Router, Link, NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const categories = [
   {
@@ -107,7 +107,6 @@ function Navigator(props) {
                 {id}
               </ListItemText>
             </ListItem>
-            <Router>
             {children.map(({ id: childId, icon, active, link }) => (
               <NavLink to={link}>
                 {/* {console.log(link)} */}
@@ -129,7 +128,6 @@ function Navigator(props) {
               </ListItem>
                 </NavLink>
                 ))} 
-                </Router>
               
             <Divider className={classes.divider} />
           </React.Fragment>
