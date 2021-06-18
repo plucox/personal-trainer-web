@@ -154,7 +154,7 @@ export default function Advertisments() {
       {menteeHaveAdv ? (
         <Paper className={classes.paper}>
         <Typography component="h1" variant="h4" align="center">
-        Your advertisment
+        My advertisment
         </Typography>
         <React.Fragment>
             <React.Fragment>
